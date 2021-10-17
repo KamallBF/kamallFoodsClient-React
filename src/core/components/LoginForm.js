@@ -1,6 +1,6 @@
 import React from "react";
-import {FormGroup, Label, Card, CardBody} from "reactstrap";
-import {Formik, Form, Field} from "formik";
+import {Card, CardBody, FormGroup, Label} from "reactstrap";
+import {Field, Form, Formik} from "formik";
 import * as Yup from "yup";
 import Button from "./Button";
 
@@ -24,32 +24,34 @@ const LoginForm = () => {
     }
 
     return (
-        <Card>
-                <Formik
-                    initialValues={initialValues}
-                    validationShema={SignupSchema}
-                    onSubmit={onSubmit}
-                >
-                    {({ errors, touched }) => (
-                        <div>
+        <Card className="login">
+            <Formik
+                initialValues={initialValues}
+                validationShema={SignupSchema}
+                onSubmit={onSubmit}
+            >
+                {({errors, touched}) => (
+                    <Card id="loginBody">
+                        <CardBody>
                             <Form>
                                 <FormGroup>
-                                    <Label >Email</Label>
-                                    <Field className="field" name="email" type="email" />
-                                    {/*errors.email && touched.email ? <div>{errors.email}</div> : null*/}
+                                    <Label>Email</Label>
+                                    <Field className="field" name="email" type="email"/>
+                                    {errors.email && touched.email ? <div>{errors.email}</div> : null}
                                 </FormGroup>
                                 <FormGroup>
                                     <Label>Password</Label>
-                                    <Field className="field" name="password" />
-                                    {/*errors.password && touched.password ? (
+                                    <Field className="field" name="password"/>
+                                    {errors.password && touched.password ? (
                                         <div>{errors.password}</div>
-                                    ) : null*/}
+                                    ) : null}
                                 </FormGroup>
                                 <Button className="button-square" type="submit" shape={2}>Submit</Button>
                             </Form>
-                        </div>
-                    )}
-                </Formik>
+                        </CardBody>
+                    </Card>
+                )}
+            </Formik>
         </Card>
     )
 }

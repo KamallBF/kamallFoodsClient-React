@@ -1,0 +1,19 @@
+@media only screen and (max-width: 600px) {
+  header {
+    display: flex;
+    background-color: #35393f;
+    justify-content: space-around;
+  }
+
+  img {
+    margin-top: 5px;
+    height: 85px;
+  }
+
+  #icon {
+    height: 100px;
+    width: 50px;
+    color: white;
+  }
+}
+

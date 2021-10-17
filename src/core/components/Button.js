@@ -1,6 +1,6 @@
 import React, { } from "react";
 
-const Button = ({textColor, shape=('round' | 'square' | 'oval'), backgroundColor, type, children}) => {
+const Button = ({textColor, shape=('round' | 'square' | 'oval'), backgroundColor = "blue", type, children}) => {
     const isRound = {
         borderRadius: '12px',
     }
