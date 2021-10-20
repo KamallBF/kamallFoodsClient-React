@@ -1,0 +1,26 @@
+footer {
+  background-color: #344666;
+  padding-top: 10px;
+  width: 100%;
+}
+@media only screen and (max-width: 600px) {
+  #logo {
+    height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #infos {
+    display: flex;
+    p {
+      color: white;
+      font-size: 15px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    div > p:first-child  {
+      font-weight: bold;
+    }
+  }
+}
