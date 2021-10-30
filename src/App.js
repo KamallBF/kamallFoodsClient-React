@@ -1,6 +1,5 @@
 import './assets/scss/index.scss';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import Login from "./Views/Login/Login";
+import {Route, Switch, BrowserRouter} from 'react-router-dom';
 import {useEffect} from "react";
 import Home from "./Views/Home/Home";
 
@@ -14,18 +13,7 @@ function App() {
     <div className="App">
         <BrowserRouter>
             <Switch>
-                <Route>
-                    <Route path="/login">
-                        {
-                            <Login />
-                        }
-                    </Route>
-                    <Route path="/" exact component={Home}>
-                        {
-                            <Home />
-                        }
-                    </Route>
-                </Route>
+                <Route path="/" exact component={Home}/>
             </Switch>
         </BrowserRouter>
     </div>

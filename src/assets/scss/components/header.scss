@@ -7,13 +7,21 @@
 
   img {
     margin-top: 5px;
-    height: 85px;
+    height: 80px;
   }
 
-  #icon {
+
+  .icon {
+    * {
+      color: white;
+    }
     height: 100px;
-    width: 50px;
-    color: white;
+    width: 200px;
+
+    :active {
+      transform: translateY(5%);
+    }
   }
+
 }
 

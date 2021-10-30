@@ -1,5 +1,5 @@
 import React from "react";
-import Kamalogo from "../../assets/imgs/kamall_food_logo.jpg"
+import Kamalogo from "../../../assets/imgs/kamall_food_logo.jpg"
 
 const Footer = () => {
     return (

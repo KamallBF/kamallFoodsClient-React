@@ -1,6 +1,6 @@
 import React, { } from "react";
 
-const Button = ({textColor, shape=('round' | 'square' | 'oval'), backgroundColor = "blue", type, children}) => {
+const Button = ({textColor, shape=('square' | 'round' | 'oval'), backgroundColor = "#007DBF", type, children, onClick}) => {
     const isRound = {
         borderRadius: '12px',
     }
@@ -16,13 +16,14 @@ const Button = ({textColor, shape=('round' | 'square' | 'oval'), backgroundColor
     const styleBuilder = Object.assign({}, {
         backgroundColor: backgroundColor,
         textColor: textColor,
-    },(shape === 1 ? isRound : shape === 2 ? isSquare : isOval) );
+    },(shape === 1 ? isOval : shape === 2 ? isRound : isSquare) );
 
     return (
         <button
             style={styleBuilder}
             className="button-square"
-            type={type} >
+            type={type}
+            onClick={onClick}>
             {children}
         </button>
     )
