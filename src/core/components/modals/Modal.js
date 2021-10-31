@@ -28,7 +28,7 @@ const TModal = ({template, show, setModalState}) => {
 
     return (
         <BootstrapModal show={show} onHide={() => setModalState(false)}>
-            <Template />
+            <Template setModalState={setModalState}/>
         </BootstrapModal>
     )
 }
@@ -36,9 +36,9 @@ const TModal = ({template, show, setModalState}) => {
 const Modal = ({template, setModalState, show}) => {
 
     if (template.title !== undefined || template.body !== undefined)
-        return <BModal show={show} template={template} setModalState={setModalState} />
+        return <BModal show={show} template={template} setModalState={setModalState}/>
 
-    return  <TModal show={show} template={template} setModalState={setModalState}/>
+    return <TModal show={show} template={template} setModalState={setModalState}/>
 }
 
 export default Modal;

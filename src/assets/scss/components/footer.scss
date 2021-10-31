@@ -3,6 +3,7 @@ footer {
   padding-top: 10px;
   width: 100%;
 }
+
 @media only screen and (max-width: 600px) {
   #logo {
     height: 50px;
@@ -13,13 +14,15 @@ footer {
 
   #infos {
     display: flex;
+
     p {
       color: white;
       font-size: 15px;
       text-align: center;
       margin-top: 20px;
     }
-    div > p:first-child  {
+
+    div > p:first-child {
       font-weight: bold;
     }
   }

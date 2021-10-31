@@ -1,7 +1,7 @@
 import './assets/scss/index.scss';
-import {Route, Switch, BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {useEffect} from "react";
-import Home from "./Views/Home/Home";
+import Home from "./views/Home/Home";
 
 function App() {
 
@@ -9,15 +9,15 @@ function App() {
 
     }, [])
 
-  return (
-    <div className="App">
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={Home}/>
-            </Switch>
-        </BrowserRouter>
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" exact component={Home}/>
+                </Switch>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
