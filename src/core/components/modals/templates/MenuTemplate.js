@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ProfilePng from "../../../../assets/imgs/profile.png"
 import {useTranslation} from 'react-i18next';
+import LoginModalTemplate from "./LoginModalTemplate";
 
-const MenuTemplate = ({setModalState}) => {
+const MenuTemplate = ({setModalState, setSelected}) => {
     const [t] = useTranslation();
+    useEffect( () => setSelected())
 
     return (
         <div className="menu-template">
@@ -19,7 +21,7 @@ const MenuTemplate = ({setModalState}) => {
             </section>
             <section className="bottom-content">
                 <section className="login-signup-container">
-                    <a href="#login" className="login square-a">
+                    <a onClick={() => setSelected(LoginModalTemplate.name)} href="#login" className="login square-a">
                         {t('Se connecter')} </a>
                     <a href="#register" className="signup square-a">
                         {t('Créer un compte')} </a>
@@ -56,4 +58,4 @@ const MenuTemplate = ({setModalState}) => {
     )
 }
 
-export default MenuTemplate
+export default MenuTemplate;

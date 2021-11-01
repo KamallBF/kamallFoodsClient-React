@@ -1,9 +1,8 @@
 import React from "react";
-import {useTranslation} from 'react-i18next';
+//import {useTranslation} from 'react-i18next';
 
-const LoginModalTemplate = () => {
-    const [t] = useTranslation();
-
+const LoginModalTemplate = ({setModalState}) => {
+    //const [t] = useTranslation();
 
     return (
         <div>

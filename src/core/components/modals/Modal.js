@@ -23,22 +23,21 @@ const BModal = ({template, show, setModalState}) => (
 )
 
 //Full template bootstrap Modal
-const TModal = ({template, show, setModalState}) => {
-    const Template = template
+const TModal = ({template, show, setModalState, setSelected}) => {
+    const Template = template;
 
     return (
         <BootstrapModal show={show} onHide={() => setModalState(false)}>
-            <Template setModalState={setModalState}/>
+            {<Template setModalState={setModalState} setSelected={setSelected}/>}
         </BootstrapModal>
     )
 }
 
-const Modal = ({template, setModalState, show}) => {
-
-    if (template.title !== undefined || template.body !== undefined)
+const Modal = ({template, setModalState, show, setSelected}) => {
+    if (template?.title !== undefined || template?.body !== undefined)
         return <BModal show={show} template={template} setModalState={setModalState}/>
 
-    return <TModal show={show} template={template} setModalState={setModalState}/>
+    return <TModal show={show} template={template} setModalState={setModalState} setSelected={setSelected}/>
 }
 
 export default Modal;
