@@ -1,29 +1,29 @@
 @media only screen and (max-width: 600px) {
-  .button-square {
-    font-family: Takeaway Sans, Avant Garde, Century Gothic, Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    width: calc(50% - 10px);
-    line-height: 40px;
-    height: 40px;
-    color: #125fca;
-    border: 1px solid #e7e7e7;
-    user-select: none;
-    padding: 0 16px;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
+
+}
+.button-square {
+  font-family: Takeaway Sans, Avant Garde, Century Gothic, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100%;
+  line-height: 5px;
+  height: 40px;
+  border: 1px solid #e7e7e7;
+  user-select: none;
+  //padding: 0 16px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+button {
+  :active {
+    transform: translateY(5%);
   }
 
-  button {
-    :active {
-      transform: translateY(5%);
-    }
-
-    :hover {
-      background-color: #0953bd;
-      color: #fff;
-    }
+  :hover {
+    background-color: #0953bd;
+    color: #fff;
   }
 }
 

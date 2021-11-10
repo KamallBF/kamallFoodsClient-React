@@ -10,13 +10,13 @@ function App() {
     }, [])
 
     return (
-        <div className="App">
-            <BrowserRouter>
-                <Switch>
-                    <Route path="/" exact component={Home}/>
-                </Switch>
-            </BrowserRouter>
-        </div>
+                <div className="App">
+                    <BrowserRouter>
+                        <Switch>
+                            <Route path="/" exact component={Home}/>
+                        </Switch>
+                    </BrowserRouter>
+                </div>
     );
 }
 

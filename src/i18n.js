@@ -49,7 +49,4 @@ i18n
             escapeValue: false
         },
     });
-
-i18n.changeLanguage('en')
-
 export default i18n;

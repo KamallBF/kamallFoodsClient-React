@@ -1,0 +1,54 @@
+.login, .forget-password {
+  background: orange;
+  h4 {
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white;
+  }
+  .title-login, .title-forget-password {
+    height: 100%;
+  }
+
+  Label, a {
+    font-family: Takeaway Sans, Avant Garde, Century Gothic, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+  }
+
+  a {
+    color: orange;
+  }
+}
+
+#login-signup-body{
+  background: #f3fcfc;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-login {
+
+}
+
+.bottom-login-signup {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+
+  a {
+  }
+}
+
+.buttons-fg > Button {
+  margin-bottom: 15px;
+}
+
+.mdp-login {
+  display: flex;
+  justify-content: space-between;
+  :nth-child(2) {
+    color: orange;
+    :hover {
+      cursor: pointer;
+    }
+  }
+}

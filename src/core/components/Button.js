@@ -1,13 +1,15 @@
 import React from "react";
 
 const Button = ({
-                    textColor,
+                    textColor = "#FFFFFF",
                     shape = ('square' | 'round' | 'oval'),
-                    backgroundColor = "#007DBF",
-                    type,
+                    backgroundColor = "#125fca",
+                    textSize ,
+                    type = "text",
                     children,
                     onClick
                 }) => {
+
     const isRound = {
         borderRadius: '12px',
     }
@@ -22,7 +24,8 @@ const Button = ({
 
     const styleBuilder = Object.assign({}, {
         backgroundColor: backgroundColor,
-        textColor: textColor,
+        color : textColor,
+        fontSize: textSize
     }, (shape === 1 ? isOval : shape === 2 ? isRound : isSquare));
 
     return (
@@ -30,6 +33,7 @@ const Button = ({
             style={styleBuilder}
             className="button-square"
             type={type}
+            color={textColor}
             onClick={onClick}>
             {children}
         </button>

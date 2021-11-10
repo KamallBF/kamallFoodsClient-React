@@ -1,16 +1,19 @@
 // Components
 @import './Components/Form/field';
+@import './Components/Form/login';
+@import './Components/Form/signup';
 @import 'components/Button/button';
-@import "./View/login";
+@import "View/signin";
 @import "components/header";
 @import "components/footer";
 @import "components/modal";
 @import "components/Modal/Templates/menu";
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
 //General
 
 .hidden {
- //visibility: hidden;
+  //visibility: hidden;
   transition: visibility 0s 2s, opacity 2s linear;
 
   -webkit-transition: opacity 3s ease-in-out;
@@ -18,4 +21,25 @@
   -ms-transition: opacity 3s ease-in-out;
   -o-transition: opacity 3s ease-in-out;
   opacity: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, label, span {
+  font-weight: 500;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+body, html, .App, #root, .auth-wrapper {
+  width: 100%;
+  height: 100%;
 }

@@ -5,14 +5,16 @@ import {faCogs} from "@fortawesome/free-solid-svg-icons";
 import Modal from "../modals/Modal";
 import MenuTemplate from "../modals/templates/MenuTemplate";
 import LoginModalTemplate from "../modals/templates/LoginModalTemplate";
+import SignUpModalTemplate from "../modals/templates/SignUpModalTemplate";
+import ForgetPasswordModalTemplate from "../modals/templates/ForgetPasswordTemplate";
 
-const modals = [MenuTemplate, LoginModalTemplate];
+const modals = [MenuTemplate, LoginModalTemplate, SignUpModalTemplate, ForgetPasswordModalTemplate];
 
 const Header = () => {
     const [modalState, setModalState] = useState(false);
     const [selected, setSelected] = useState("MenuTemplate"); // selected modal template
 
-    useEffect( () => {
+    useEffect(() => {
         if (!modalState)
             setSelected("MenuTemplate")
     }, [modalState, selected])
@@ -26,10 +28,11 @@ const Header = () => {
         <header className="header">
             <img src={Kamalogo} alt="home logo"/>
             <FontAwesomeIcon className="icon" size="2x" icon={faCogs} onClick={handleParamsClick}/>
-            {modalState === true ? <Modal template={modals[modals.findIndex(el => el.name === selected) === -1 ? 0 : modals.findIndex(el => el.name === selected)]}
-                   show={modalState}
-                   setModalState={setModalState}
-                   setSelected={setSelected}
+            {modalState === true ? <Modal
+                template={modals[modals.findIndex(el => el.name === selected) === -1 ? 0 : modals.findIndex(el => el.name === selected)]}
+                show={modalState}
+                setModalState={setModalState}
+                setSelected={setSelected}
             /> : null}
         </header>
     )

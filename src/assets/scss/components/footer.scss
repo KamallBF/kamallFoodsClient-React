@@ -2,6 +2,16 @@ footer {
   background-color: #344666;
   padding-top: 10px;
   width: 100%;
+  font-family: fontello, Takeaway Sans, Avant Garde, Century Gothic, Helvetica, Arial, sans-serif;
+}
+
+p, #copyright {
+  color: white;
+}
+
+
+#footer-first > p:first-child, #footer-second > p:first-child {
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
@@ -14,9 +24,9 @@ footer {
 
   #infos {
     display: flex;
+    padding-top: 20px;
 
     p {
-      color: white;
       font-size: 15px;
       text-align: center;
       margin-top: 20px;
@@ -25,5 +35,40 @@ footer {
     div > p:first-child {
       font-weight: bold;
     }
+  }
+
+  #copyright {
+    margin-left: 33%;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 601px) {
+  footer {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex-flow: row wrap;
+
+  }
+
+  #logo {
+    height: 100px;
+  }
+
+  #infos {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+
+  #footer-first, #footer-second, #logo {
+    padding-right: 10em;
+  }
+
+  #copyright {
+    display: block;
+    flex-direction: column;
   }
 }
