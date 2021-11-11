@@ -8,7 +8,7 @@ const ForgetPasswordModalTemplate = ({setSelected}) => {
     return (
         <div className="forget-password">
             <h4 className="title-forget-password">{t('Réinitialiser le mot de passe')}</h4>
-            <ForgetPasswordForm setSelected={setSelected} />
+            <ForgetPasswordForm setSelected={setSelected}/>
         </div>
     )
 }

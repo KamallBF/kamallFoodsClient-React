@@ -37,17 +37,19 @@ const ForgetPassword = ({setSelected}) => {
                                     <FormGroup className="">
                                         <Label>{t('Email')}</Label>
                                         <Field as="input" className="field" name="email" type="email"/>
-                                        {errors.email && touched.email ? <div style={{color: "red"}}>{t(`${errors.email}`)}</div> : null}
+                                        {errors.email && touched.email ?
+                                            <div className="errs">{t(`${errors.email}`)}</div> : null}
                                     </FormGroup>
                                     <div className="bottom-login-signup">
-                                        <Button className="square-button" textSize="15px" textColor="white" type="submit" >{t('Envoyer')}</Button>
-                                        <a onClick={() => setSelected(MenuTemplate.name)} href="#home" >{t('Retour')}</a>
+                                        <Button className="square-button" textSize="15px" textColor="white"
+                                                type="submit">{t('Envoyer')}</Button>
+                                        <a onClick={() => setSelected(MenuTemplate.name)} href="#home">{t('Retour')}</a>
                                     </div>
                                 </Form>
                             </CardBody>
                         </Card>
                     )}
-                    </Formik>
+            </Formik>
         </Card>
     )
 }

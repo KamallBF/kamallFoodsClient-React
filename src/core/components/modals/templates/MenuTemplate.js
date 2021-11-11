@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import ProfilePng from "../../../../assets/imgs/profile.png"
 import {useTranslation} from 'react-i18next';
 import LoginModalTemplate from "./LoginModalTemplate";
@@ -6,9 +6,6 @@ import SignUpModalTemplate from "./SignUpModalTemplate";
 
 const MenuTemplate = ({setModalState, setSelected}) => {
     const [t] = useTranslation();
-    useEffect(() => {
-
-    })
 
     return (
         <div className="menu-template">

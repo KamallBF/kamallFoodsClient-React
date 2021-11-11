@@ -28,12 +28,17 @@ const Header = () => {
         <header className="header">
             <img src={Kamalogo} alt="home logo"/>
             <FontAwesomeIcon className="icon" size="2x" icon={faCogs} onClick={handleParamsClick}/>
-            {modalState === true ? <Modal
-                template={modals[modals.findIndex(el => el.name === selected) === -1 ? 0 : modals.findIndex(el => el.name === selected)]}
-                show={modalState}
-                setModalState={setModalState}
-                setSelected={setSelected}
-            /> : null}
+            {modalState === true ?
+                <div>
+                    <Modal
+                        template={modals[modals.findIndex(el => el.name === selected) === -1 ? 0 : modals.findIndex(el => el.name === selected)]}
+                        show={modalState}
+                        setModalState={setModalState}
+                        setSelected={setSelected}
+                    />
+            </div>
+
+                : null}
         </header>
     )
 }

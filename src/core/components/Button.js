@@ -4,10 +4,11 @@ const Button = ({
                     textColor = "#FFFFFF",
                     shape = ('square' | 'round' | 'oval'),
                     backgroundColor = "#125fca",
-                    textSize ,
+                    textSize,
                     type = "text",
                     children,
-                    onClick
+                    onClick,
+                    disabled,
                 }) => {
 
     const isRound = {
@@ -23,8 +24,9 @@ const Button = ({
     }
 
     const styleBuilder = Object.assign({}, {
-        backgroundColor: backgroundColor,
-        color : textColor,
+        backgroundColor: disabled ? "#bcccd7" : backgroundColor,
+        border : disabled ? "1px solid #0066cc" : "",
+        color: disabled ? "white" : textColor,
         fontSize: textSize
     }, (shape === 1 ? isOval : shape === 2 ? isRound : isSquare));
 
@@ -34,7 +36,9 @@ const Button = ({
             className="button-square"
             type={type}
             color={textColor}
-            onClick={onClick}>
+            onClick={onClick}
+            disabled={disabled ?? false}
+        >
             {children}
         </button>
     )

@@ -8,7 +8,7 @@ const LoginModalTemplate = ({setSelected}) => {
     return (
         <div className="login">
             <h4 className="title-login">{t('Se connecter')}</h4>
-            <LoginForm setSelected={setSelected} />
+            <LoginForm setSelected={setSelected}/>
         </div>
     )
 }

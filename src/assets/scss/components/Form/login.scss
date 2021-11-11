@@ -1,10 +1,12 @@
 .login, .forget-password {
   background: orange;
+
   h4 {
     margin-top: 10px;
     margin-left: 10px;
     color: white;
   }
+
   .title-login, .title-forget-password {
     height: 100%;
   }
@@ -19,7 +21,7 @@
   }
 }
 
-#login-signup-body{
+#login-signup-body {
   background: #f3fcfc;
   justify-content: center;
   align-items: center;
@@ -45,8 +47,10 @@
 .mdp-login {
   display: flex;
   justify-content: space-between;
+
   :nth-child(2) {
     color: orange;
+
     :hover {
       cursor: pointer;
     }
