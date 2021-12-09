@@ -7,6 +7,7 @@ import MenuTemplate from "../modals/templates/MenuTemplate";
 import LoginModalTemplate from "../modals/templates/LoginModalTemplate";
 import SignUpModalTemplate from "../modals/templates/SignUpModalTemplate";
 import ForgetPasswordModalTemplate from "../modals/templates/ForgetPasswordTemplate";
+import {Link} from "react-router-dom";
 
 const modals = [MenuTemplate, LoginModalTemplate, SignUpModalTemplate, ForgetPasswordModalTemplate];
 
@@ -26,7 +27,9 @@ const Header = () => {
 
     return (
         <header className="header">
-            <img src={Kamalogo} alt="home logo"/>
+            <Link to="/" >
+                <img src={Kamalogo} alt="home logo"/>
+            </Link>
             <FontAwesomeIcon className="icon" size="2x" icon={faCogs} onClick={handleParamsClick}/>
             {modalState === true ?
                 <div>

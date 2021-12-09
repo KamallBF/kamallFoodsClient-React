@@ -1,7 +1,8 @@
 import axios from 'axios'
 import {decrypt} from "../helpers/aes_helper";
 
-const baseUrl = "https://localhost:44301/";
+//const baseUrl = "https://localhost:44301/";
+const baseUrl = "https://git.heroku.com/kamall-foods-server.git/";
 
 const baseApi = axios.create({
     baseURL: baseUrl,
