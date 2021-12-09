@@ -9,11 +9,14 @@ import ForgetPasswordModalTemplate from "../modals/templates/ForgetPasswordTempl
 import {baseApi} from "../../../api/calls";
 import Snack from "../Snack";
 import MenuTemplate from "../modals/templates/MenuTemplate";
+import {encrypt} from "../../../helpers/aes_helper"
+import useAuth from "../../../api/auth";
 
 const LoginForm = ({setSelected}) => {
     const [t] = useTranslation();
     const [loading, setLoading] = useState(false);
-    const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi"]);
+    const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "warning"]);
+    const {getUserAfterLogin} = useAuth()
 
     const LoginSchema = Yup.object().shape({
         email: Yup.string().email().required('Required'),
@@ -32,11 +35,21 @@ const LoginForm = ({setSelected}) => {
     const onSubmit = async values => {
         setLoading(true);
         await baseApi.post('Users/login', values).then(res => {
+            const encrypted_access_token = encrypt(res.data.accessToken);
+            localStorage.setItem("access_token", encrypted_access_token);
+
+            const encrypted_refresh_token = encrypt(res.data.refreshToken.token)
+            const refresh_token = res.data.refreshToken;
+            refresh_token.token = encrypted_refresh_token;
+            localStorage.setItem("refresh_token", JSON.stringify(refresh_token));
+
+            getUserAfterLogin();
+
             setLoading(false);
-            setOpenSnackbar([true, "Successfully Authenticated"])
+            setOpenSnackbar([true, "Successfully Authenticated", "success"])
         }).catch(async err => {
             setLoading(false);
-            setOpenSnackbar([true, "An error has occurred"])
+            setOpenSnackbar([true, "An error has occurred", "error"])
         })
     }
 
@@ -48,10 +61,11 @@ const LoginForm = ({setSelected}) => {
     };
 
     useEffect(() => {
-        if(openSnackbar[0]){
+        if (openSnackbar[0]) {
             setTimeout(() => {
-                setSelected(MenuTemplate.name);
-            }, 5000);
+                if (openSnackbar[2] === "success")
+                    setSelected(MenuTemplate.name);
+            }, 1500);
         }
     })
 
@@ -97,21 +111,28 @@ const LoginForm = ({setSelected}) => {
                                     ) : null}
                                 </FormGroup>
                                 <div className="bottom-login-signup">
-                                    <Button disabled={loading} className="square-button" textSize="15px" textColor="white"
+                                    <Button disabled={loading} className="square-button" textSize="15px"
+                                            textColor="white"
                                             type="submit">
                                         {loading && (
                                             <i
                                                 className="fa fa-refresh fa-spin"
-                                                style={{ marginRight: "5px" }}
+                                                style={{marginRight: "5px"}}
                                             />
                                         )}
-                                        {!loading &&  t('Se connecter')}
+                                        {!loading && t('Se connecter')}
                                         {loading && t('Connexion en cours...')}
 
                                     </Button>
                                     <a onClick={() => setSelected(SignUpModalTemplate.name)}
                                        href="#register">{t('Créer un compte')}</a>
-                                    <Snack handleClose={handleClose} vertical="bottom" horizontal="center" open={openSnackbar[0]} message={openSnackbar[1]}/>
+                                    <Snack handleClose={handleClose}
+                                           vertical="bottom"
+                                           horizontal="center"
+                                           open={openSnackbar[0]}
+                                           message={openSnackbar[1]}
+                                           severity={openSnackbar[2]}
+                                    />
                                 </div>
                             </Form>
                         </CardBody>

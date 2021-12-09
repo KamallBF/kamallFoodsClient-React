@@ -1,17 +1,19 @@
 import axios from 'axios'
-//import { useCookies } from 'react-cookie';
+import {decrypt} from "../helpers/aes_helper";
 
-const baseUrl = "https://localhost:49155/";
+const baseUrl = "https://localhost:44301/";
 
 const baseApi = axios.create({
     baseURL: baseUrl,
     headers: {
         "Content-Type": "application/json",
         "Accept": "*/*",
+        'Authorization': 'Bearer ' +  decrypt(localStorage.getItem('access_token'))
     },
 });
 
 baseApi.interceptors.request.use(req => {
+    req.headers['Authorization']= 'Bearer ' +  decrypt(localStorage.getItem('access_token'));
     return req;
 }, error => {
     return Promise.reject(error);

@@ -42,10 +42,12 @@
   "lastname is a required field": "Lastname is a required field",
   "undefined": "undefined",
   "Your account was successfully created": "Your account was successfully created",
-  "Your account was created successfully" : "Your account was created successfully",
-  "Création" : "Creating account...",
+  "Your account was created successfully": "Your account was created successfully",
+  "Création": "Creating account...",
   "Connexion en cours...": "Login...",
-  "Connexion Réussi" : "Logged in successfully",
-  "An error has occurred" : "An error has occurred",
-  "Successfully Authenticated": "Successfully Authenticated"
+  "Connexion Réussi": "Logged in successfully",
+  "An error has occurred": "An error has occurred",
+  "Successfully Authenticated": "Successfully Authenticated",
+  "Adresses": "Adresses",
+  "Deconnexion": "Log out"
 }

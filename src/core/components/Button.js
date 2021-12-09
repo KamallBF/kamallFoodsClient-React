@@ -25,7 +25,7 @@ const Button = ({
 
     const styleBuilder = Object.assign({}, {
         backgroundColor: disabled ? "#bcccd7" : backgroundColor,
-        border : disabled ? "1px solid #0066cc" : "",
+        border: disabled ? "1px solid #0066cc" : "",
         color: disabled ? "white" : textColor,
         fontSize: textSize
     }, (shape === 1 ? isOval : shape === 2 ? isRound : isSquare));

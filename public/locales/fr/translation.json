@@ -41,10 +41,12 @@
   "lastname is a required field": "Nom requis !",
   "undefined": "undefined",
   "Your account was successfully created": "Votre compte à été bien créer",
-  "Your account was created successfully" : "Votre compte à été bien créer",
-  "Création" : "Création en cours...",
+  "Your account was created successfully": "Votre compte à été bien créer",
+  "Création": "Création en cours...",
   "Connexion en cours...": "Connexion en cours...",
   "Connexion Réussi": "Connexion Réussi",
   "An error has occurred": "Une erreur s'est produite. Ressayer plus tard",
-  "Successfully Authenticated": "Connection reussi"
+  "Successfully Authenticated": "Connection reussi",
+  "Adresses": "Adresses",
+  "Deconnexion": "Deconnexion"
 }

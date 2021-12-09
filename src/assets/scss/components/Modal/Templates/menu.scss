@@ -180,6 +180,11 @@
       content: "\f004";
     }
 
+    .adresses:before {
+      margin-top: 110px;
+      content: '\f022';
+    }
+
     .points:before {
       content: "\f06b";
     }
@@ -201,6 +206,10 @@
     .language:before {
       margin-top: 55px;
       content: "\f1ab";
+    }
+
+    .logout:before {
+      content: '\f015';
     }
   }
 }

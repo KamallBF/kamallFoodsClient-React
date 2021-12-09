@@ -4,12 +4,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
 import {Skeleton} from "@mui/material";
-import { CookiesProvider } from "react-cookie";
+import {CookiesProvider} from "react-cookie";
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <Suspense fallback={<Skeleton animation="wave" />}>
+        <Suspense fallback={<Skeleton animation="wave"/>}>
             <CookiesProvider>
                 <App/>
             </CookiesProvider>

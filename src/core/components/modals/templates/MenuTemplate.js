@@ -1,18 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import ProfilePng from "../../../../assets/imgs/profile.png"
 import {useTranslation} from 'react-i18next';
 import LoginModalTemplate from "./LoginModalTemplate";
 import SignUpModalTemplate from "./SignUpModalTemplate";
+import useAuth from "../../../../api/auth";
 
-const MenuTemplate = ({setModalState, setSelected}) => {
+const MenuTemplate = ({setModalState, setSelected, value}) => {
     const [t] = useTranslation();
+    const {user, signOut} = useAuth();
+
+    useEffect(() => {
+
+    })
 
     return (
         <div className="menu-template">
             <section className="top-content">
                 <img className="default-profile" src={ProfilePng} alt="Profile Png"/>
                 <div className="profile-data">
-                    <span id="myaccount" href="#myaccount">{t('Mon Compte')}</span>
+                    <span id="myaccount" href="#myaccount">{user ? user.firstname + " " + user.lastname : t('Mon Compte')}</span>
                     <a href="#personnaldata">
                         <span id="personnaldata">{t('Voir mes données personnelles')}</span>
                     </a>
@@ -21,13 +27,19 @@ const MenuTemplate = ({setModalState, setSelected}) => {
             </section>
             <section className="bottom-content">
                 <section className="login-signup-container">
-                    <a onClick={() => setSelected(LoginModalTemplate.name)} href="#login" className=" square-a">
-                        {t('Se connecter')} </a>
-                    <a onClick={() => setSelected(SignUpModalTemplate.name)} href="#register"
-                       className="square-a">
-                        {t('Créer un compte')} </a>
+                    {
+                        user !== undefined ? <></>
+                            :
+                            <>
+                                <a onClick={() => setSelected(LoginModalTemplate.name)} href="#login"
+                                   className=" square-a">
+                                    {t('Se connecter')} </a>
+                                <a onClick={() => setSelected(SignUpModalTemplate.name)} href="#register"
+                                   className="square-a">
+                                    {t('Créer un compte')} </a>
+                            </>
+                    }
                 </section>
-
                 <ul className="atom-list">
                     <li className="orders"><a href="#orders">
                         {t('Commandes')} </a>
@@ -35,6 +47,14 @@ const MenuTemplate = ({setModalState, setSelected}) => {
                     <li className="favourites"><a href="#favourites">
                         {t('Favoris')} </a>
                     </li>
+                    {
+                        user ?
+                            <li className="adresses"><a href="#adresses">
+                                {t('Adresses')} </a></li>
+                            :
+                            <></>
+                    }
+
                 </ul>
 
                 <ul className="atom-list">
@@ -54,6 +74,16 @@ const MenuTemplate = ({setModalState, setSelected}) => {
                     <li className="language"><a href="#language">
                         {t('Langue')} </a></li>
                 </ul>
+
+                {
+                    user ?
+                        <ul className="atom-list">
+                            <li className="logout"><a href="#logout" onClick={signOut}>
+                                {t('Deconnexion')} </a></li>
+                        </ul>
+                        :
+                        <></>
+                }
             </section>
         </div>
     )

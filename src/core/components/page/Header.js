@@ -36,8 +36,7 @@ const Header = () => {
                         setModalState={setModalState}
                         setSelected={setSelected}
                     />
-            </div>
-
+                </div>
                 : null}
         </header>
     )

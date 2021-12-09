@@ -7,11 +7,10 @@ import {useTranslation} from "react-i18next";
 import LoginModalTemplate from "../modals/templates/LoginModalTemplate";
 import {baseApi} from "../../../api/calls";
 import Snack from "../Snack";
-import MenuTemplate from "../modals/templates/MenuTemplate";
 
 const SignUpForm = ({setSelected}) => {
     const [t] = useTranslation();
-    const [openSnackbar, setOpenSnackbar] = useState([false, ""]);
+    const [openSnackbar, setOpenSnackbar] = useState([false, "", "error"]);
     const [loading, setLoading] = useState(false);
 
     const SignupSchema = Yup.object({
@@ -35,10 +34,10 @@ const SignUpForm = ({setSelected}) => {
         setLoading(true);
         await baseApi.post('Users/register', values).then(res => {
             setLoading(false)
-            setOpenSnackbar([true, res.data.message]);
+            setOpenSnackbar([true, res.data.message, "success"]);
         }).catch((err) => {
             setLoading(false);
-            setOpenSnackbar([true, "An error has occured"]);
+            setOpenSnackbar([true, "An error has occurred", "error"]);
         })
     }
 
@@ -50,10 +49,11 @@ const SignUpForm = ({setSelected}) => {
     };
 
     useEffect(() => {
-        if(openSnackbar[0]){
-             setTimeout(() => {
-                 setSelected(MenuTemplate.name);
-             }, 5000);
+        if (openSnackbar[0]) {
+            setTimeout(() => {
+                if (openSnackbar[2] !== "error")
+                    setSelected(LoginModalTemplate.name);
+            }, 1500);
         }
     })
 
@@ -114,7 +114,7 @@ const SignUpForm = ({setSelected}) => {
                                         {loading && (
                                             <i
                                                 className="fa fa-refresh fa-spin"
-                                                style={{ marginRight: "5px" }}
+                                                style={{marginRight: "5px"}}
                                             />
                                         )}
                                         {!loading && t('Créer un compte')}
@@ -122,7 +122,13 @@ const SignUpForm = ({setSelected}) => {
                                     </Button>
                                     <a onClick={() => setSelected(LoginModalTemplate.name)}
                                        href="#login">{t('J\'ai déja un compte')}</a>
-                                    <Snack handleClose={handleClose} vertical="bottom" horizontal="center" open={openSnackbar[0]} message={openSnackbar[1]}/>
+                                    <Snack handleClose={handleClose}
+                                           vertical="bottom"
+                                           horizontal="center"
+                                           open={openSnackbar[0]}
+                                           message={openSnackbar[1]}
+                                           severity={openSnackbar[2]}
+                                    />
                                 </div>
                             </Form>
                         </CardBody>
