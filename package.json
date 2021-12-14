@@ -32,6 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "win-https-start": "set PORT=443&&set HTTPS=true&&set SSL_CRT_FILE=./certs/ssl.cer&&set SSL_KEY_FILE=./certs/privKey.pem&& npm start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "test": "react-scripts test",

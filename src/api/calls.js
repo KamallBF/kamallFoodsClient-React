@@ -1,22 +1,29 @@
 import axios from 'axios'
-import {decrypt} from "../helpers/aes_helper";
 
-//const baseUrl = "https://localhost:44301/";
-const baseUrl = "https://git.heroku.com/kamall-foods-server.git/";
+const baseUrl = "https://localhost:5001/";
+//const baseUrl = "https://www.kamall-foods-server.xyz/";
 
 const baseApi = axios.create({
     baseURL: baseUrl,
+    withCredentials: true,
     headers: {
         "Content-Type": "application/json",
         "Accept": "*/*",
-        'Authorization': 'Bearer ' +  decrypt(localStorage.getItem('access_token'))
     },
 });
 
 baseApi.interceptors.request.use(req => {
-    req.headers['Authorization']= 'Bearer ' +  decrypt(localStorage.getItem('access_token'));
     return req;
 }, error => {
+    return Promise.reject(error);
+});
+
+baseApi.interceptors.response.use(res => {
+    return res;
+}, error => {
+    if ((error.response.statusText === "Unauthorized") && (localStorage.getItem('access_token') !== null)){
+        console.log("Session expired")
+    }
     return Promise.reject(error);
 });
 

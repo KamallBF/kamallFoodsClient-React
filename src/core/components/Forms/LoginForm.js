@@ -9,7 +9,6 @@ import ForgetPasswordModalTemplate from "../modals/templates/ForgetPasswordTempl
 import {baseApi} from "../../../api/calls";
 import Snack from "../Snack";
 import MenuTemplate from "../modals/templates/MenuTemplate";
-import {encrypt} from "../../../helpers/aes_helper"
 import useAuth from "../../../api/auth";
 
 const LoginForm = ({setSelected}) => {
@@ -35,19 +34,12 @@ const LoginForm = ({setSelected}) => {
     const onSubmit = async values => {
         setLoading(true);
         await baseApi.post('Users/login', values).then(res => {
-            const encrypted_access_token = encrypt(res.data.accessToken);
-            localStorage.setItem("access_token", encrypted_access_token);
-
-            const encrypted_refresh_token = encrypt(res.data.refreshToken.token)
-            const refresh_token = res.data.refreshToken;
-            refresh_token.token = encrypted_refresh_token;
-            localStorage.setItem("refresh_token", JSON.stringify(refresh_token));
-
             getUserAfterLogin();
 
             setLoading(false);
             setOpenSnackbar([true, "Successfully Authenticated", "success"])
-        }).catch(async err => {
+        }, ).catch( err => {
+            console.log(err);
             setLoading(false);
             setOpenSnackbar([true, "An error has occurred", "error"])
         })

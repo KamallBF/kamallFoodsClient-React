@@ -11,15 +11,15 @@ export function AuthProvider({children}) {
     const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "error"]);
 
     useEffect(() => {
-        getUser();
+        getUser()
+       /* if (localStorage.getItem('access_token') !== null)
+            getUser();*/
     }, []);
 
     const getUserAfterLogin = () => {
-        if (localStorage.getItem("access_token")){
-            getCurrentUser().then(user => {
-                setUser(user.data);
-            }).catch( err => console.log(err))
-        }
+        getCurrentUser().then(user => {
+            setUser(user.data);
+        }).catch(err => console.log(err))
     }
 
     const getUser = () => {
@@ -31,6 +31,7 @@ export function AuthProvider({children}) {
             .catch((_error) => {
             })
             .finally(() => setLoadingInitial(false));
+
     }
 
     const signIn = (email, password) => {
@@ -63,7 +64,12 @@ export function AuthProvider({children}) {
     }
 
     const signOut = () => {
-        logout().then(() => setUser(undefined));
+        logout().then(() => {
+            setUser(undefined);
+            setOpenSnackbar([true, "Déconnexion reussi", "success"]);
+        }).catch(err => {
+            setOpenSnackbar([true, "An error has occurred", "error"]);
+        });
     }
 
     const memoizedValue = useMemo(
@@ -72,6 +78,7 @@ export function AuthProvider({children}) {
             loading,
             error,
             openSnackbar,
+            setOpenSnackbar,
             signIn,
             signUp,
             signOut,

@@ -1,8 +1,12 @@
 header {
-  display: flex;
+  display: block;
   background-color: #35393f;
-  justify-content: space-around;
   align-items: center;
+}
+
+.center-header {
+  display: flex;
+  justify-content: space-around;
 }
 
 .icon {
@@ -19,8 +23,8 @@ header {
 //mobile
 @media only screen and (max-width: 600px) {
   img {
-    margin-top: 5px;
-    height: 80px;
+    //margin-top: 5px;
+    height: 90px;
   }
 
   .icon {
@@ -36,7 +40,7 @@ header {
   }
 
   img {
-    margin-top: 10px;
+    //margin-top: 10px;
     height: 70px;
   }
 
@@ -45,8 +49,8 @@ header {
       color: white;
     }
 
-    height: 25px;
-    margin-top: 10px;
+    height: 71px;
+    //margin-top: 10px;
   }
 }
 

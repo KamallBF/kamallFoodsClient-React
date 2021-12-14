@@ -5,13 +5,7 @@ const loginSession = (loginCredentials) => {
 };
 
 const logout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user_infos');
-    window.location.reload();
-
-    return new Promise(resolve => {
-    })
+    return baseApi.post("Users/logout");
 }
 
 const getCurrentUser = () => {

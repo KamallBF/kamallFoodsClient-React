@@ -49,5 +49,6 @@
   "An error has occurred": "An error has occurred",
   "Successfully Authenticated": "Successfully Authenticated",
   "Adresses": "Adresses",
-  "Deconnexion": "Log out"
+  "Deconnexion": "Log out",
+  "Déconnexion reussi": "Logged out successfully"
 }

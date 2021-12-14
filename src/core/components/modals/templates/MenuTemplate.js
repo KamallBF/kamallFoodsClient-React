@@ -4,13 +4,16 @@ import {useTranslation} from 'react-i18next';
 import LoginModalTemplate from "./LoginModalTemplate";
 import SignUpModalTemplate from "./SignUpModalTemplate";
 import useAuth from "../../../../api/auth";
+import Snack from "../../Snack";
 
 const MenuTemplate = ({setModalState, setSelected, value}) => {
     const [t] = useTranslation();
-    const {user, signOut} = useAuth();
+    const {user, signOut, openSnackbar, setOpenSnackbar} = useAuth();
 
     useEffect(() => {
+        if (openSnackbar !== undefined){
 
+        }
     })
 
     return (
@@ -18,7 +21,8 @@ const MenuTemplate = ({setModalState, setSelected, value}) => {
             <section className="top-content">
                 <img className="default-profile" src={ProfilePng} alt="Profile Png"/>
                 <div className="profile-data">
-                    <span id="myaccount" href="#myaccount">{user ? user.firstname + " " + user.lastname : t('Mon Compte')}</span>
+                    <span id="myaccount"
+                          href="#myaccount">{user ? user.firstname + " " + user.lastname : t('Mon Compte')}</span>
                     <a href="#personnaldata">
                         <span id="personnaldata">{t('Voir mes données personnelles')}</span>
                     </a>
@@ -85,6 +89,19 @@ const MenuTemplate = ({setModalState, setSelected, value}) => {
                         <></>
                 }
             </section>
+            <Snack handleClose={(event, reason) => {
+                if (reason === 'clickaway') {
+                    return;
+                }
+                setOpenSnackbar(false);
+            }}
+                   vertical="bottom"
+                   horizontal="center"
+                   open={openSnackbar[0]}
+                   autoHideDuration={1500}
+                   message={openSnackbar[1]}
+                   severity={openSnackbar[2]}/>
+
         </div>
     )
 }

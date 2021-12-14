@@ -27,10 +27,12 @@ const Header = () => {
 
     return (
         <header className="header">
-            <Link to="/" >
-                <img src={Kamalogo} alt="home logo"/>
-            </Link>
-            <FontAwesomeIcon className="icon" size="2x" icon={faCogs} onClick={handleParamsClick}/>
+            <section className="center-header">
+                <Link to="/">
+                    <img src={Kamalogo} alt="home logo"/>
+                </Link>
+                <FontAwesomeIcon className="icon" size="2x" icon={faCogs} onClick={handleParamsClick}/>
+            </section>
             {modalState === true ?
                 <div>
                     <Modal

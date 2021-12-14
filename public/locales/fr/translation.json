@@ -48,5 +48,6 @@
   "An error has occurred": "Une erreur s'est produite. Ressayer plus tard",
   "Successfully Authenticated": "Connection reussi",
   "Adresses": "Adresses",
-  "Deconnexion": "Deconnexion"
+  "Deconnexion": "Deconnexion",
+  "Déconnexion reussi": "Déconnexion reussi"
 }
