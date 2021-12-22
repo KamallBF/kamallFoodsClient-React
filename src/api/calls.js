@@ -20,13 +20,14 @@ baseApi.interceptors.request.use(req => {
 
 baseApi.interceptors.response.use(res => {
     return res;
-},  error => {
-    if ((error.response.status === 401)){
+}, error => {
+    if ((error.response.status === 401)) {
         baseApi.post(baseUrl + "Users/refresh", {})
-            .then( async () => {
+            .then(async () => {
                 await getCurrentUser();
                 window.location.reload();
-            })}
+            })
+    }
     return Promise.reject(error);
 });
 

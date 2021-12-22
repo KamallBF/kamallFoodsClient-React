@@ -1,0 +1,168 @@
+.steps-subheadline {
+  margin: 8px 0 16px;
+  color: #0a3847;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+}
+
+.steps-mainheadline {
+  font-weight: 600;
+  margin: 8px 0 16px;
+  color: #f86600;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.number-of-steps-3 .step-wrapper, .steps-inner .number-of-steps-4 .step-wrapper, .steps-inner .number-of-steps-5 .step-wrapper {
+  width: 33.3333%;
+  float: left;
+}
+
+.step-icon-adress:before {
+  display: block;
+  text-align: center;
+  font-family: "FontAwesome", serif;
+  content: "\f041";
+  font-size: 80px;
+}
+
+.step-icon-selection:before {
+  display: block;
+  text-align: center;
+  font-family: "FontAwesome", serif;
+  content: "\f000";
+  font-size: 80px;
+}
+
+.step-icon-paiement:before {
+  display: block;
+  text-align: center;
+  font-family: "FontAwesome", serif;
+  content: "\f21c";
+  font-size: 80px;
+}
+
+.step-number {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #125fca;
+  font-size: 15px;
+  left: 30%;
+  top: -30px;
+}
+
+.step-headline {
+  font-family: Takeaway Sans, Avant Garde, Century Gothic, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  position: relative;
+  display: block;
+  margin: 8px 0 16px;
+  color: #0a3847;
+  font-size: 18px;
+  text-align: center;
+}
+
+.step-p {
+  font-size: 14px;
+  text-align: center;
+  color: #0a3847;
+}
+
+.wrappers {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media only screen and (min-width: 1224px) {
+  .step-wrapper {
+    width: 32%;
+    max-width: 32%;
+    min-width: 32%;
+    float: left;
+  }
+}
+
+.desktop-view-account-page {
+}
+
+.desktop-view-account {
+  display: flex;
+  //text-align: center;
+  justify-content: left;
+}
+
+.account-steps .card {
+}
+
+.account-steps a {
+  font-family: -apple-system, "Avant Garde",BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif;
+  font-size: 15px;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-weight: 600;
+  color: #125fca;
+  text-decoration: none;
+  display: block;
+}
+
+.account-steps ul li {
+  list-style: none;
+  display: block;
+  margin: 0 0 10px;
+  border-radius: 3px;
+  position: relative;
+  color: #0a3847;
+  padding: 0 0 0 17px;
+  line-height: 2.8;
+  border-bottom: 2px solid #d7d7d7;
+}
+
+.account-steps ul li:hover li:active {
+
+}
+
+.account-steps ul li:active a{
+  background-color: #e1e1e1;
+  color: #f86600;
+}
+
+.account-steps-visual {
+
+}
+
+.my-account-title {
+  color: #5b5b5b;
+  font-size: 19px;
+  font-family: -apple-system, BlinkMacSystemFont,  Avant Garde,Takeaway Sans,Century Gothic,Helvetica,Arial,sans-serif;
+  font-weight: 600;
+  margin: auto;
+}
+
+.my-account-content {
+  padding: 10px 0 0 10px;
+  margin: auto;
+}
+
+.account-image {
+  background: linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)), url("../../imgs/main_logo4.jpg") center transparent ;
+  display: block;
+  width: 100%;
+  height: 15%;
+  object-fit: cover;
+}
+
+.account-image h1 {
+  color: white;
+  text-align: center;
+}
+

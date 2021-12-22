@@ -1,9 +1,10 @@
 // Components
-@import './Components/Form/field';
-@import './Components/Form/login';
-@import './Components/Form/signup';
+@import 'components/Form/field';
+@import 'components/Form/login';
+@import 'components/Form/signup';
 @import 'components/Button/button';
 @import "View/signin";
+@import "View/home";
 @import "components/header";
 @import "components/footer";
 @import "components/modal";

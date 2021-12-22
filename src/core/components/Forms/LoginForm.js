@@ -38,11 +38,10 @@ const LoginForm = ({setSelected}) => {
 
             setLoading(false);
             setOpenSnackbar([true, res.data, "success"])
-        }, ).catch( err => {
+        },).catch(err => {
             setLoading(false);
-            //console.log(err.response.statusText)
-            console.log("bro,,,,,,,")
-            setOpenSnackbar([true, err.response.statusText, "error"])
+            const errorMessage = "Not found"
+            setOpenSnackbar([true, errorMessage, "error"])
         })
     }
 

@@ -1,11 +1,13 @@
 import React from "react";
+import {useTranslation} from "react-i18next";
 
 const HomeContent = () => {
+    const [t] = useTranslation();
+
     return (
         <section className="homeContent">
-            {/*<img id="bg-home-image" src={imgHome} alt="accueil" />*/}
             <span className="cssanimation sequence fadeInBottom display-1 welcome-span">
-                Commander et recevez directment à votre domicile
+                {t('Commander et recevez directement à votre domicile')}
             </span>
         </section>
     )

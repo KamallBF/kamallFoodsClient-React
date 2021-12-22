@@ -6,19 +6,24 @@
 }
 
 .homeContent {
-  background: url("../../imgs/main_logo4.jpg");
+  background: url("../../imgs/main_logo4.jpg") center;
   display: block;
   width: 100%;
-  height: 100%;
-  //object-fit: cover;
+  height: 50%;
+  object-fit: cover;
 }
 
 .welcome-span {
   width: 100%;
+  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  /*top: 50%;
+  left: 50%;*/
+  //transform: translateX(-1%) translateY(-50%);
+  color: white;
+  background: #e59113;
+  font-size: 25px;
+  text-align: center;
 }
 
 .cssanimation, .cssanimation span {
