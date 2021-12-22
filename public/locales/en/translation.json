@@ -50,5 +50,7 @@
   "Successfully Authenticated": "Successfully Authenticated",
   "Adresses": "Adresses",
   "Deconnexion": "Log out",
-  "Déconnexion reussi": "Logged out successfully"
+  "Déconnexion reussi": "Logged out successfully",
+  "Logged out successfully": "Logged out successfully",
+  "Successfully authenticated": "Successfully authenticated"
 }

@@ -37,11 +37,12 @@ const LoginForm = ({setSelected}) => {
             getUserAfterLogin();
 
             setLoading(false);
-            setOpenSnackbar([true, "Successfully Authenticated", "success"])
+            setOpenSnackbar([true, res.data, "success"])
         }, ).catch( err => {
-            console.log(err);
             setLoading(false);
-            setOpenSnackbar([true, "An error has occurred", "error"])
+            //console.log(err.response.statusText)
+            console.log("bro,,,,,,,")
+            setOpenSnackbar([true, err.response.statusText, "error"])
         })
     }
 

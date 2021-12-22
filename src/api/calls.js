@@ -1,7 +1,7 @@
 import axios from 'axios'
+import {getCurrentUser} from "./sessions";
 
-const baseUrl = "https://localhost:5001/";
-//const baseUrl = "https://www.kamall-foods-server.xyz/";
+const baseUrl = process.env.REACT_APP_BASEURL;
 
 const baseApi = axios.create({
     baseURL: baseUrl,
@@ -20,10 +20,13 @@ baseApi.interceptors.request.use(req => {
 
 baseApi.interceptors.response.use(res => {
     return res;
-}, error => {
-    if ((error.response.statusText === "Unauthorized") && (localStorage.getItem('access_token') !== null)){
-        console.log("Session expired")
-    }
+},  error => {
+    if ((error.response.status === 401)){
+        baseApi.post(baseUrl + "Users/refresh", {})
+            .then( async () => {
+                await getCurrentUser();
+                window.location.reload();
+            })}
     return Promise.reject(error);
 });
 

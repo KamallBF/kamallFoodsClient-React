@@ -12,26 +12,24 @@ export function AuthProvider({children}) {
 
     useEffect(() => {
         getUser()
-       /* if (localStorage.getItem('access_token') !== null)
-            getUser();*/
     }, []);
 
     const getUserAfterLogin = () => {
         getCurrentUser().then(user => {
             setUser(user.data);
-        }).catch(err => console.log(err))
+        }).catch(_ => {
+            setOpenSnackbar([true, "can't fetch user. Try again later", "error"])
+        })
     }
 
     const getUser = () => {
         getCurrentUser()
             .then(user => {
-                //localStorage.setItem("user_infos", JSON.stringify(user.data))
                 setUser(user.data);
             })
             .catch((_error) => {
             })
             .finally(() => setLoadingInitial(false));
-
     }
 
     const signIn = (email, password) => {

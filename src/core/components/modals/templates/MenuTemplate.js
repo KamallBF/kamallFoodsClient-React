@@ -101,7 +101,6 @@ const MenuTemplate = ({setModalState, setSelected, value}) => {
                    autoHideDuration={1500}
                    message={openSnackbar[1]}
                    severity={openSnackbar[2]}/>
-
         </div>
     )
 }
