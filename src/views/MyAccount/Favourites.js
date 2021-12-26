@@ -5,7 +5,7 @@ const Favourites = () => {
     const [t] = useTranslation();
     return (
         <section className="my-account-content">
-            <p className="my-account-title">{t("Restaurants favoris")}</p>
+            <p className="my-account-title">{t("Restaurants Favoris")}</p>
         </section>
     )
 }

@@ -8,7 +8,7 @@ import {CookiesProvider} from "react-cookie";
 
 ReactDOM.render(
     <React.StrictMode>
-        <Suspense fallback={<span></span>}>
+        <Suspense fallback={<span/>}>
             <CookiesProvider>
                 <App/>
             </CookiesProvider>

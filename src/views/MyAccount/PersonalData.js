@@ -1,7 +1,7 @@
 import React from "react";
 import {useTranslation} from "react-i18next";
 import useAuth from "../../api/auth";
-import { Field, Form, Formik } from 'formik';
+import {Field, Form, Formik} from 'formik';
 import {Label} from "reactstrap";
 import {FormGroup} from "@mui/material";
 
@@ -14,7 +14,7 @@ const PersonalData = () => {
             <p className="my-account-title">{t("Données personnelles")}</p>
             <div className="d-flex justify-content-center is-align-content-space-around">
                 <Formik
-                    initialValues={{ email: '', firstName: '', lastName: '' }}
+                    initialValues={{email: '', firstName: '', lastName: ''}}
                     onSubmit={(values, actions) => {
                         setTimeout(() => {
                             alert(JSON.stringify(values, null, 2));
@@ -35,7 +35,7 @@ const PersonalData = () => {
                                 </FormGroup>
                                 <FormGroup className="pb-2">
                                     <Label>{t('Email')}</Label>
-                                    <Field type="email" name="email" value={user?.email} />
+                                    <Field type="email" name="email" value={user?.email}/>
                                 </FormGroup>
                             </div>
                             <button type="button" className="btn btn-primary">{t('Enregistrer')}</button>

@@ -10,12 +10,20 @@ import {baseApi} from "../../../api/calls";
 import Snack from "../Snack";
 import MenuTemplate from "../modals/templates/MenuTemplate";
 import useAuth from "../../../api/auth";
+import useModalContext from "../../context/modalContext";
 
 const LoginForm = ({setSelected}) => {
     const [t] = useTranslation();
     const [loading, setLoading] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "warning"]);
-    const {getUserAfterLogin} = useAuth()
+    const {getUserAfterLogin, accountCreationValidation, setAccountCreationValidation} = useAuth();
+    //const [isInPage, setIsInPage] = useState(false);
+    const {isInPage, setIsInPage} = useModalContext();
+
+    useEffect(() => {
+        if (window.location.href.includes("/login"))
+            setIsInPage(true);
+    }, [setIsInPage])
 
     const LoginSchema = Yup.object().shape({
         email: Yup.string().email().required('Required'),
@@ -35,13 +43,13 @@ const LoginForm = ({setSelected}) => {
         setLoading(true);
         await baseApi.post('Users/login', values).then(res => {
             getUserAfterLogin();
-
             setLoading(false);
             setOpenSnackbar([true, res.data, "success"])
         },).catch(err => {
             setLoading(false);
-            const errorMessage = "Not found"
-            setOpenSnackbar([true, errorMessage, "error"])
+            if (err.response.data.error === "This account is not verified yet, please check your mailbox")
+                setAccountCreationValidation(true);
+            setOpenSnackbar([true, err.response.data.error, "error"])
         })
     }
 
@@ -55,8 +63,12 @@ const LoginForm = ({setSelected}) => {
     useEffect(() => {
         if (openSnackbar[0]) {
             setTimeout(() => {
-                if (openSnackbar[2] === "success")
+                if (openSnackbar[2] === "success") {
                     setSelected(MenuTemplate.name);
+                    setAccountCreationValidation(false);
+                    if (isInPage)
+                        window.location.replace("/")
+                }
             }, 1500);
         }
     })
@@ -94,8 +106,12 @@ const LoginForm = ({setSelected}) => {
                                 <FormGroup>
                                     <div className="mdp-login">
                                         <Label>{t('Mot de passe')}</Label>
-                                        <a href="#forgot"
-                                           onClick={() => setSelected(ForgetPasswordModalTemplate.name)}>{t('Mot de passe oublié ?')}</a>
+                                        {
+                                            isInPage ? <a href="/forgot-password">{t('Mot de passe oublié ?')}</a>
+                                                :
+                                                <a href="#forgot"
+                                                   onClick={() => setSelected(ForgetPasswordModalTemplate.name)}>{t('Mot de passe oublié ?')}</a>
+                                        }
                                     </div>
                                     <Field as="input" className="field" name="password" type="password"/>
                                     {errors.password && touched.password ? (
@@ -116,8 +132,18 @@ const LoginForm = ({setSelected}) => {
                                         {loading && t('Connexion en cours...')}
 
                                     </Button>
-                                    <a onClick={() => setSelected(SignUpModalTemplate.name)}
-                                       href="#register">{t('Créer un compte')}</a>
+                                    {
+                                        isInPage ? <a href="/register">{t('Créer un compte')}</a>
+                                            :
+                                            <a onClick={() => setSelected(SignUpModalTemplate.name)}
+                                               href="#register">{t('Créer un compte')}</a>
+                                    }
+                                    {
+                                        (accountCreationValidation) &&
+                                        <div className="alert alert-info" role="alert">
+                                            {t("Un email de validation vous a été envoyé. Vérifiez votre compte avant de vous connecter")}
+                                        </div>
+                                    }
                                     <Snack handleClose={handleClose}
                                            vertical="bottom"
                                            horizontal="center"

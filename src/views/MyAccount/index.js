@@ -1,6 +1,6 @@
 import React from "react";
 import {useMediaQuery} from 'react-responsive'
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import PersonalData from "./PersonalData";
 import {useTranslation} from "react-i18next";
 import Addresses from "./Adresses";
@@ -37,11 +37,17 @@ const MyAccount = () => {
                                 <div className="card-body align-self-center">
                                     <h5 className="card-title">{t("Mon compte")}</h5>
                                     <ul>
-                                        <li><a className="card-text" href="/my-account/personal-data">{t("Données personnelles")}</a></li>
-                                        <li><a className="card-text" href="/my-account/favorites">{t("Restaurants Favoris")}</a></li>
-                                        <li><a className="card-text" href="/my-account/adresses">{t("Adresses")}</a></li>
-                                        <li><a className="card-text" href="/my-account/change-password">{t("Changez le mot de passe")}</a></li>
-                                        <li><a className="card-text" href="/" onClick={signOut}>{t("Se déconnecter")}</a></li>
+                                        <li><a className="card-text"
+                                               href="/my-account/personal-data">{t("Données personnelles")}</a></li>
+                                        <li><a className="card-text"
+                                               href="/my-account/favorites">{t("Restaurants Favoris")}</a></li>
+                                        <li><a className="card-text" href="/my-account/adresses">{t("Adresses")}</a>
+                                        </li>
+                                        <li><a className="card-text"
+                                               href="/my-account/change-password">{t("Changez le mot de passe")}</a>
+                                        </li>
+                                        <li><a className="card-text" href="/"
+                                               onClick={signOut}>{t("Se déconnecter")}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -53,6 +59,7 @@ const MyAccount = () => {
                                 <Route path="/my-account/adresses" component={Addresses}/>
                                 <Route path="/my-account/favorites" component={Favourites}/>
                                 <Route path="/my-account/change-password" component={ChangePassword}/>
+                                <Redirect to="/my-account"/>
                             </Switch>
                         </div>
                     </div>

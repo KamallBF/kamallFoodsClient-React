@@ -8,6 +8,7 @@ export function AuthProvider({children}) {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
     const [loadingInitial, setLoadingInitial] = useState(true);
+    const [accountCreationValidation, setAccountCreationValidation] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "error"]);
 
     useEffect(() => {
@@ -77,13 +78,15 @@ export function AuthProvider({children}) {
             error,
             openSnackbar,
             setOpenSnackbar,
+            accountCreationValidation,
+            setAccountCreationValidation,
             signIn,
             signUp,
             signOut,
             getUser,
             getUserAfterLogin
         }),
-        [user, loading, error, openSnackbar]
+        [user, loading, error, openSnackbar, accountCreationValidation]
     );
 
     return (

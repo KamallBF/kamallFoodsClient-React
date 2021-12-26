@@ -7,11 +7,21 @@ import {useTranslation} from "react-i18next";
 import LoginModalTemplate from "../modals/templates/LoginModalTemplate";
 import {baseApi} from "../../../api/calls";
 import Snack from "../Snack";
+import useAuth from "../../../api/auth";
+import useModalContext from "../../context/modalContext";
 
 const SignUpForm = ({setSelected}) => {
     const [t] = useTranslation();
     const [openSnackbar, setOpenSnackbar] = useState([false, "", "error"]);
     const [loading, setLoading] = useState(false);
+    const {setAccountCreationValidation} = useAuth()
+    //const [isInPage, setIsInPage] = useState(false);
+    const {isInPage, setIsInPage} = useModalContext();
+
+    useEffect(() => {
+        if (window.location.href.includes("/register"))
+            setIsInPage(true);
+    }, [setIsInPage])
 
     const SignupSchema = Yup.object({
         firstname: Yup.string().min(3).max(40).required(),
@@ -37,7 +47,7 @@ const SignUpForm = ({setSelected}) => {
             setOpenSnackbar([true, res.data.message, "success"]);
         }).catch((err) => {
             setLoading(false);
-            setOpenSnackbar([true, "An error has occurred", "error"]);
+            setOpenSnackbar([true, err.response.data.error, "error"]);
         })
     }
 
@@ -51,8 +61,12 @@ const SignUpForm = ({setSelected}) => {
     useEffect(() => {
         if (openSnackbar[0]) {
             setTimeout(() => {
-                if (openSnackbar[2] !== "error")
+                if (openSnackbar[2] !== "error") {
                     setSelected(LoginModalTemplate.name);
+                    setAccountCreationValidation(true);
+                    if (isInPage)
+                        window.location.replace("/login")
+                }
             }, 1500);
         }
     })
@@ -109,8 +123,7 @@ const SignUpForm = ({setSelected}) => {
                                     ) : null}
                                 </FormGroup>
                                 <div className="bottom-login-signup">
-                                    <Button disabled={loading} className="square-button"
-                                            type="submit">
+                                    <Button disabled={loading} className="square-button" type="submit">
                                         {loading && (
                                             <i
                                                 className="fa fa-refresh fa-spin"
@@ -120,8 +133,13 @@ const SignUpForm = ({setSelected}) => {
                                         {!loading && t('Créer un compte')}
                                         {loading && t('Création')}
                                     </Button>
-                                    <a onClick={() => setSelected(LoginModalTemplate.name)}
-                                       href="#login">{t('J\'ai déja un compte')}</a>
+                                    {
+                                        isInPage ? <a href="/login">{t('J\'ai déja un compte')}</a>
+                                            :
+                                            <a onClick={() => setSelected(LoginModalTemplate.name)}
+                                               href="#login">{t('J\'ai déja un compte')}</a>
+                                    }
+
                                     <Snack handleClose={handleClose}
                                            vertical="bottom"
                                            horizontal="center"

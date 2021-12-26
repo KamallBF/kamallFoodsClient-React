@@ -6,7 +6,7 @@ const ChangePassword = () => {
 
     return (
         <section className="my-account-content">
-            <p className="my-account-title">{t("Changer le mot de passe")}</p>
+            <p className="my-account-title">{t("Changez le mot de passe")}</p>
         </section>
     )
 }

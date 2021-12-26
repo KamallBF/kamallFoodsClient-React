@@ -3,12 +3,14 @@ import HomeContent from "./Content/HomeContent";
 import Content1 from "./Content/Content1";
 import CookieConsent from "react-cookie-consent";
 import {useTranslation} from "react-i18next";
+import useModalContext from "../../core/context/modalContext";
 
 const Home = () => {
     const [t] = useTranslation();
+    const {setIsInPage} = useModalContext();
 
     useEffect(() => {
-
+        setIsInPage(false)
     })
 
     return (
