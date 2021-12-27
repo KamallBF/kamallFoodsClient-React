@@ -41,7 +41,7 @@ const LoginForm = ({setSelected}) => {
 
     const onSubmit = async values => {
         setLoading(true);
-        await baseApi.post('Users/login', values).then(res => {
+        await baseApi.post('Auth/login', values).then(res => {
             getUserAfterLogin();
             setLoading(false);
             setOpenSnackbar([true, res.data, "success"])

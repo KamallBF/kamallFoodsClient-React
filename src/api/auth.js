@@ -12,8 +12,9 @@ export function AuthProvider({children}) {
     const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "error"]);
 
     useEffect(() => {
-        getUser()
-    }, []);
+        if (user === undefined)
+            getUser()
+    }, [user]);
 
     const getUserAfterLogin = () => {
         getCurrentUser().then(user => {
