@@ -54,6 +54,7 @@
   "Logged out successfully": "Déconnexion reussi",
   "Not found": "Email et/ou mot de passe incorrect(s)",
   "One or more errors occurred. (Invalid email or password)": "Email et/ou mot de passe incorrect(s)",
+  "One or more errors occurred. (The password is not valid)": "Email et/ou mot de passe incorrect(s)",
   "Adresse": "Adresse",
   "Entrez le nom de votre rue ou laissez-nous déterminer votre position.": "Entrez le nom de votre rue ou laissez-nous déterminer votre position.",
   "Sélection": "Sélection",
@@ -79,5 +80,9 @@
   "Your email have been confirmed.": "Votre Email a été confirmé.",
   "Back to login": "Connecter vous",
   "Invalid confirmation Email": "Email invalide",
-  "Invalid confirmation link": "Invalid confirmation link"
+  "Invalid confirmation link": "Invalid confirmation link",
+  "Numéro de téléphone": "Numéro de téléphone",
+  "Nom du restaurant": "Nom du restaurant",
+  "restaurantName is a required field": "Nom du restaurant requis",
+  "Phone number is not valid": "Numéro de téléphone invalide"
 }

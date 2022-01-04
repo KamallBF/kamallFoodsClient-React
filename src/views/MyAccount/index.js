@@ -1,6 +1,6 @@
 import React from "react";
 import {useMediaQuery} from 'react-responsive'
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Link, Redirect, Route, Switch} from "react-router-dom";
 import PersonalData from "./PersonalData";
 import {useTranslation} from "react-i18next";
 import Addresses from "./Adresses";
@@ -37,17 +37,17 @@ const MyAccount = () => {
                                 <div className="card-body align-self-center">
                                     <h5 className="card-title">{t("Mon compte")}</h5>
                                     <ul>
-                                        <li><a className="card-text"
-                                               href="/my-account/personal-data">{t("Données personnelles")}</a></li>
-                                        <li><a className="card-text"
-                                               href="/my-account/favorites">{t("Restaurants Favoris")}</a></li>
-                                        <li><a className="card-text" href="/my-account/adresses">{t("Adresses")}</a>
+                                        <li><Link className="card-text"
+                                                  to="/my-account/personal-data">{t("Données personnelles")}</Link></li>
+                                        <li><Link className="card-text"
+                                                  to="/my-account/favorites">{t("Restaurants Favoris")}</Link></li>
+                                        <li><Link className="card-text" to="/my-account/adresses">{t("Adresses")}</Link>
                                         </li>
-                                        <li><a className="card-text"
-                                               href="/my-account/change-password">{t("Changez le mot de passe")}</a>
+                                        <li><Link className="card-text"
+                                                  to="/my-account/change-password">{t("Changez le mot de passe")}</Link>
                                         </li>
-                                        <li><a className="card-text" href="/"
-                                               onClick={signOut}>{t("Se déconnecter")}</a></li>
+                                        <li><Link className="card-text" to="/"
+                                                  onClick={signOut}>{t("Se déconnecter")}</Link></li>
                                     </ul>
                                 </div>
                             </div>

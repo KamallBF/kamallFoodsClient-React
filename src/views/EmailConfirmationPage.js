@@ -30,11 +30,12 @@ const EmailConfirmationPage = (props) => {
             <div className="text-center align-items-center d-flex flex-column align-self-center">
                 {
                     loading ? <i
-                        className="fa fa-refresh fa-spin"
-                        style={{marginRight: "5px", fontSize: "50px"}}
-                    /> :
+                            className="fa fa-refresh fa-spin"
+                            style={{marginRight: "5px", fontSize: "50px"}}
+                        /> :
                         <>
-                            <img className="m-lg-5" src={resState ? iconValidated : iconInvalid} alt="account validated logo"/>
+                            <img className="m-lg-5" src={resState ? iconValidated : iconInvalid}
+                                 alt="account validated logo"/>
                             <span>{t(message)}</span>
                             {resState && <a href="/login">{t("Back to login")}</a>}
                         </>
