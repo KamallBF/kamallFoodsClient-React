@@ -5,10 +5,11 @@ const Button = ({
                     shape = ('square' | 'round' | 'oval'),
                     backgroundColor = "#125fca",
                     textSize,
-                    type = "text",
+                    type = "button",
                     children,
                     onClick,
                     disabled,
+                    ...props
                 }) => {
 
     const isRound = {
@@ -38,6 +39,7 @@ const Button = ({
             color={textColor}
             onClick={onClick}
             disabled={disabled ?? false}
+            {...props}
         >
             {children}
         </button>

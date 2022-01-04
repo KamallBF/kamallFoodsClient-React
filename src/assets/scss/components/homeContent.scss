@@ -1,0 +1,50 @@
+#bg-home-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.homeContent {
+  background: url("../../imgs/main_logo4.jpg") center;
+  display: block;
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.welcome-span {
+  width: 100%;
+  display: block;
+  position: absolute;
+  /*top: 50%;
+  left: 50%;*/
+  //transform: translateX(-1%) translateY(-50%);
+  color: white;
+  background: #e59113;
+  font-size: 25px;
+  text-align: center;
+}
+
+.cssanimation, .cssanimation span {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.cssanimation span {
+  display: inline-block
+}
+
+.fadeInBottom {
+  animation-name: fadeInBottom
+}
+
+@keyframes fadeInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1
+  }
+}

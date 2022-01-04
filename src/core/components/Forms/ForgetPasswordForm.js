@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import * as Yup from "yup";
 import {Field, Form, Formik} from "formik";
@@ -9,6 +9,12 @@ import MenuTemplate from "../modals/templates/MenuTemplate";
 
 const ForgetPassword = ({setSelected}) => {
     const [t] = useTranslation();
+    const [isInPage, setIsInPage] = useState(false);
+
+    useEffect(() => {
+        if (window.location.href.includes("/forgot-password"))
+            setIsInPage(true);
+    }, [])
 
     const ForgetPasswordSchema = Yup.object().shape({
         email: Yup.string().email('Invalid email').required('Required')
@@ -43,7 +49,12 @@ const ForgetPassword = ({setSelected}) => {
                                     <div className="bottom-login-signup">
                                         <Button className="square-button" textSize="15px" textColor="white"
                                                 type="submit">{t('Envoyer')}</Button>
-                                        <a onClick={() => setSelected(MenuTemplate.name)} href="#home">{t('Retour')}</a>
+                                        {
+                                            isInPage ? <a href="/">{t('Retour')}</a>
+                                                :
+                                                <a onClick={() => setSelected(MenuTemplate.name)}
+                                                   href="#home">{t('Retour')}</a>
+                                        }
                                     </div>
                                 </Form>
                             </CardBody>

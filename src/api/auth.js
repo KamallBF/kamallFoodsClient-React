@@ -8,24 +8,25 @@ export function AuthProvider({children}) {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
     const [loadingInitial, setLoadingInitial] = useState(true);
+    const [accountCreationValidation, setAccountCreationValidation] = useState(false);
     const [openSnackbar, setOpenSnackbar] = useState([false, "Connexion Réussi", "error"]);
 
     useEffect(() => {
-        getUser();
-    }, []);
+        if (user === undefined)
+            getUser()
+    }, [user]);
 
     const getUserAfterLogin = () => {
-        if (localStorage.getItem("access_token")){
-            getCurrentUser().then(user => {
-                setUser(user.data);
-            }).catch( err => console.log(err))
-        }
+        getCurrentUser().then(user => {
+            setUser(user.data);
+        }).catch(_ => {
+            setOpenSnackbar([true, "can't fetch user. Try again later", "error"])
+        })
     }
 
     const getUser = () => {
         getCurrentUser()
             .then(user => {
-                //localStorage.setItem("user_infos", JSON.stringify(user.data))
                 setUser(user.data);
             })
             .catch((_error) => {
@@ -63,7 +64,12 @@ export function AuthProvider({children}) {
     }
 
     const signOut = () => {
-        logout().then(() => setUser(undefined));
+        logout().then(() => {
+            setUser(undefined);
+            setOpenSnackbar([true, "Déconnexion reussi", "success"]);
+        }).catch(err => {
+            setOpenSnackbar([true, "An error has occurred", "error"]);
+        });
     }
 
     const memoizedValue = useMemo(
@@ -72,13 +78,16 @@ export function AuthProvider({children}) {
             loading,
             error,
             openSnackbar,
+            setOpenSnackbar,
+            accountCreationValidation,
+            setAccountCreationValidation,
             signIn,
             signUp,
             signOut,
             getUser,
             getUserAfterLogin
         }),
-        [user, loading, error, openSnackbar]
+        [user, loading, error, openSnackbar, accountCreationValidation]
     );
 
     return (

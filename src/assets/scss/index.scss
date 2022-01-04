@@ -1,13 +1,15 @@
 // Components
-@import './Components/Form/field';
-@import './Components/Form/login';
-@import './Components/Form/signup';
+@import 'components/Form/field';
+@import 'components/Form/login';
+@import 'components/Form/signup';
 @import 'components/Button/button';
 @import "View/signin";
+@import "View/home";
 @import "components/header";
 @import "components/footer";
 @import "components/modal";
 @import "components/Modal/Templates/menu";
+@import "components/homeContent";
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
 
 //General
@@ -28,7 +30,6 @@
 }
 
 body {
-  min-height: 100vh;
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
@@ -40,7 +41,7 @@ h1, h2, h3, h4, h5, h6, label, span {
 }
 
 body, html, .App, #root, .auth-wrapper {
-  width: 100%;
+  width: 100vw;
   height: 100%;
 }
 
