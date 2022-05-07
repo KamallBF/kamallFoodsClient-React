@@ -1,0 +1,56 @@
+header {
+  display: block;
+  background-color: #35393f;
+  align-items: center;
+}
+
+.center-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon {
+  * {
+    color: white;
+  }
+
+  :active {
+    transform: translateY(5%);
+  }
+}
+
+
+//mobile
+@media only screen and (max-width: 600px) {
+  img {
+    //margin-top: 5px;
+    height: 90px;
+  }
+
+  .icon {
+
+    height: 100px;
+  }
+}
+
+//Desktop
+@media only screen and (min-width: 601px) {
+  header {
+    padding-bottom: 10px;
+  }
+
+  img {
+    //margin-top: 10px;
+    height: 70px;
+  }
+
+  .icon {
+    * {
+      color: white;
+    }
+
+    height: 71px;
+    //margin-top: 10px;
+  }
+}
+
