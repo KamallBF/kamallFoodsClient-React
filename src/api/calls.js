@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {getCurrentUser} from "./sessions";
 
-const baseUrl = process.env.REACT_APP_BASEURL;
+const baseUrl = process.env.REACT_APP_BASEURL_TEST;
 
 const baseApi = axios.create({
     baseURL: baseUrl,
