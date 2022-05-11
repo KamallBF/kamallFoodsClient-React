@@ -30,8 +30,8 @@ const LoginForm = ({setSelected}) => {
         password: Yup.string()
             .required('No password provided.')
             .min(8, 'Password is too short - should be 8 chars minimum.')
-            .matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-                "Must Contain 8 Characters, One Uppercase, One Lowercase and One Number")
+            .matches(/[a-zA-Z]/,
+                "Must Contain 8 Characters")
     });
 
     const initialValues = {

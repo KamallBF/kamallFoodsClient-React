@@ -36,7 +36,7 @@ const RegisterProfessional = () => {
             .required('No password provided.')
             .min(8, 'Password is too short - should be 8 chars minimum.')
             .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-        phoneNumber: Yup.string().matches(phoneRegExp, "Phone number is not valid").required(),
+        phoneNumber: Yup.string()/*matches(phoneRegExp, "Phone number is not valid").*/,
         restaurantName: Yup.string().required()
     });
 
@@ -51,110 +51,114 @@ const RegisterProfessional = () => {
 
     const onSubmit = async values => {
         setLoading(true);
-        await baseApi.post('Restaurant/register', values).then(res => {
-            /* setLoading(false)
-             setOpenSnackbar([true, res.data.message, "success"]);*/
+        await baseApi.post('Restaurants/register', values).then(res => {
+            console.log(res)
+            setLoading(false)
+             setOpenSnackbar([true, res.data.message, "success"]);
         }).catch((err) => {
-            /* setLoading(false);
-             setOpenSnackbar([true, err.response.data.error, "error"]);*/
+            setLoading(false);
+             setOpenSnackbar([true, err.response.data.error, "error"]);
         })
     }
 
     return (
-        <Card>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={SignupSchema}
-                onSubmit={onSubmit}
-            >
-                {({errors, touched}) => (
-                    <Card id="login-signup-body">
-                        <CardBody>
-                            <div className="buttons-fg">
-                                <Button textColor="#000000"
-                                        backgroundColor="#e7e7e7"
-                                        textSize="15px"
-                                >
-                                    <i className="fa fa-google fa-lg"/>
-                                    {t('Se connecter avec Google')}
-                                </Button>
-                                <Button textColor="#FFFFFF"
-                                        backgroundColor="#125fca"
-                                        textSize="15px"
-                                >
-                                    {t('Se connecter avec Meta')}
-                                </Button>
-                            </div>
-                            <Form>
-                                <FormGroup>
-                                    <Label>{t('Prénom')}</Label>
-                                    <Field className="field" name="firstname" type="string"/>
-                                    {errors.firstname && touched.firstname ?
-                                        <div className="errs">{t(`${errors.firstname}`)}</div> : null}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>{t('Nom')}</Label>
-                                    <Field className="field" name="lastname" type="string"/>
-                                    {errors.lastname && touched.lastname ?
-                                        <div className="errs">{t(`${errors.lastname}`)}</div> : null}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>{t('Numéro de téléphone')}</Label>
-                                    <Field className="field" name="phone" type="string"/>
-                                    {errors.phoneNumber && touched.phoneNumber ?
-                                        <div className="errs">{t(`${errors.phoneNumber}`)}</div> : null}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>{t('Nom du restaurant')}</Label>
-                                    <Field className="field" name="restaurantName" type="string"/>
-                                    {errors.restaurantName && touched.restaurantName ?
-                                        <div className="errs">{t(`${errors.restaurantName}`)}</div> : null}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>{t('Email')}</Label>
-                                    <Field className="field" name="email" type="email"/>
-                                    {errors.email && touched.email ?
-                                        <div className="errs">{t(`${errors.email}`)}</div> : null}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label>{t('Mot de passe')}</Label>
-                                    <Field className="field" name="password" type="password"/>
-                                    {errors.password && touched.password ? (
-                                        <div className="errs">{t(`${errors.password}`)}</div>
-                                    ) : null}
-                                </FormGroup>
-                                <div className="bottom-login-signup">
-                                    <Button disabled={loading} className="square-button" type="submit">
-                                        {loading && (
-                                            <i
-                                                className="fa fa-refresh fa-spin"
-                                                style={{marginRight: "5px"}}
-                                            />
-                                        )}
-                                        {!loading && t('Créer un compte')}
-                                        {loading && t('Création')}
+        <>
+            <Card>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={SignupSchema}
+                    onSubmit={onSubmit}
+                >
+                    {({errors, touched}) => (
+                        <Card id="login-signup-body">
+                            <CardBody>
+                                <div className="buttons-fg">
+                                    <Button textColor="#000000"
+                                            backgroundColor="#e7e7e7"
+                                            textSize="15px"
+                                    >
+                                        <i className="fa fa-google fa-lg"/>
+                                        {t('Se connecter avec Google')}
                                     </Button>
-                                    {
-                                        isInPage ? <a href="/login">{t('J\'ai déja un compte')}</a>
-                                            :
-                                            <a onClick={() => setSelected(LoginModalTemplate.name)}
-                                               href="#login">{t('J\'ai déja un compte')}</a>
-                                    }
-
-                                    <Snack handleClose={handleClose}
-                                           vertical="bottom"
-                                           horizontal="center"
-                                           open={openSnackbar[0]}
-                                           message={openSnackbar[1]}
-                                           severity={openSnackbar[2]}
-                                    />
+                                    <Button textColor="#FFFFFF"
+                                            backgroundColor="#125fca"
+                                            textSize="15px"
+                                    >
+                                        {t('Se connecter avec Meta')}
+                                    </Button>
                                 </div>
-                            </Form>
-                        </CardBody>
-                    </Card>
-                )}
-            </Formik>
-        </Card>
+                                <Form>
+                                    <FormGroup>
+                                        <Label>{t('Prénom')}</Label>
+                                        <Field className="field" name="firstname" type="string"/>
+                                        {errors.firstname && touched.firstname ?
+                                            <div className="errs">{t(`${errors.firstname}`)}</div> : null}
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label>{t('Nom')}</Label>
+                                        <Field className="field" name="lastname" type="string"/>
+                                        {errors.lastname && touched.lastname ?
+                                            <div className="errs">{t(`${errors.lastname}`)}</div> : null}
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label>{t('Numéro de téléphone')}</Label>
+                                        <Field className="field" name="phone" type="string"/>
+                                        {errors.phoneNumber && touched.phoneNumber ?
+                                            <div className="errs">{t(`${errors.phoneNumber}`)}</div> : null}
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label>{t('Nom du restaurant')}</Label>
+                                        <Field className="field" name="restaurantName" type="string"/>
+                                        {errors.restaurantName && touched.restaurantName ?
+                                            <div className="errs">{t(`${errors.restaurantName}`)}</div> : null}
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label>{t('Email')}</Label>
+                                        <Field className="field" name="email" type="email"/>
+                                        {errors.email && touched.email ?
+                                            <div className="errs">{t(`${errors.email}`)}</div> : null}
+                                    </FormGroup>
+                                    <FormGroup>
+                                        <Label>{t('Mot de passe')}</Label>
+                                        <Field className="field" name="password" type="password"/>
+                                        {errors.password && touched.password ? (
+                                            <div className="errs">{t(`${errors.password}`)}</div>
+                                        ) : null}
+                                    </FormGroup>
+                                    <div className="bottom-login-signup">
+                                        <Button disabled={loading} className="square-button" type="submit">
+                                            {loading && (
+                                                <i
+                                                    className="fa fa-refresh fa-spin"
+                                                    style={{marginRight: "5px"}}
+                                                />
+                                            )}
+                                            {!loading && t('Créer un compte')}
+                                            {loading && t('Création')}
+                                        </Button>
+                                        {
+                                            isInPage ? <a href="/login">{t('J\'ai déja un compte')}</a>
+                                                :
+                                                <a onClick={() => setSelected(LoginModalTemplate.name)}
+                                                   href="#login">{t('J\'ai déja un compte')}</a>
+                                        }
+
+                                        <Snack handleClose={handleClose}
+                                               vertical="bottom"
+                                               horizontal="center"
+                                               open={openSnackbar[0]}
+                                               message={openSnackbar[1]}
+                                               severity={openSnackbar[2]}
+                                        />
+                                    </div>
+                                </Form>
+                            </CardBody>
+                        </Card>
+                    )}
+                </Formik>
+            </Card>
+        </>
+
     )
 }
 
