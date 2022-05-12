@@ -7,7 +7,6 @@ const LoginPage = ({data}) => {
 
     useEffect(() => {
         setSelected("LoginModalTemplate");
-        console.log(data)
     })
 
     return (
