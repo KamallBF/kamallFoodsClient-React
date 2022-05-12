@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 import useAuth from "../../api/auth";
 import useModalContext from "../../core/context/modalContext";
 
-const RegisterProfessional = () => {
+const RegisterProfessional = (props) => {
     const [t] = useTranslation();
     const [openSnackbar, setOpenSnackbar] = useState([false, "", "error"]);
     const [loading, setLoading] = useState(false);
@@ -53,11 +53,14 @@ const RegisterProfessional = () => {
     }
 
     const onSubmit = async values => {
-        console.log(values);
         setLoading(true);
         await baseApi.post('Restaurants/register', values).then(res => {
             setLoading(false)
             setOpenSnackbar([true, res.data, "success"]);
+
+            setTimeout(() => {
+                props.history.push('/')
+            }, 3000)
         }).catch((err) => {
             setLoading(false);
             setOpenSnackbar([true, err.response.data.error, "error"]);
@@ -129,16 +132,16 @@ const RegisterProfessional = () => {
                                         ) : null}
                                     </FormGroup>
                                     <div className="bottom-login-signup">
-                                        <Button disabled={loading} className="square-button" type="submit">
-                                            {loading && (
-                                                <i
-                                                    className="fa fa-refresh fa-spin"
-                                                    style={{marginRight: "5px"}}
-                                                />
-                                            )}
-                                            {!loading && t('Créer un compte')}
-                                            {loading && t('Création')}
-                                        </Button>
+                                            <Button disabled={loading} className="square-button" type="submit">
+                                                {loading && (
+                                                    <i
+                                                        className="fa fa-refresh fa-spin"
+                                                        style={{marginRight: "5px"}}
+                                                    />
+                                                )}
+                                                {!loading && t('Créer un compte')}
+                                                {loading && t('Création')}
+                                            </Button>
                                         {/*
                                             isInPage ? <a href="/login">{t('J\'ai déja un compte')}</a>
                                                 :
