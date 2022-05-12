@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useMediaQuery} from 'react-responsive'
 import {Link, Redirect, Route, Switch} from "react-router-dom";
 import PersonalData from "./PersonalData";
@@ -16,6 +16,10 @@ const MyAccount = () => {
     })
     const [t] = useTranslation();
     const {signOut} = useAuth();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    })
 
     return (
         <>

@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Card, CardBody, FormGroup, Label} from "reactstrap";
 import {Field, Form, Formik} from "formik";
 import Button from "../../core/components/Button";
-import LoginModalTemplate from "../../core/components/modals/templates/LoginModalTemplate";
 import Snack from "../../core/components/Snack";
 import * as Yup from "yup";
 import {baseApi} from "../../api/calls";
@@ -19,6 +18,10 @@ const RegisterProfessional = () => {
     const {isInPage, setIsInPage} = useModalContext();
     const [selected, setSelected] = useState();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    });
+
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -31,13 +34,13 @@ const RegisterProfessional = () => {
     const SignupSchema = Yup.object({
         firstname: Yup.string().min(3).max(40).required(),
         lastname: Yup.string().min(3).max(40).required(),
+        phoneNumber: Yup.string().min(8).max(13).matches(/^\d*$/).required()/*matches(phoneRegExp, "Phone number is not valid").*/,
         email: Yup.string().email().required('Required'),
         password: Yup.string()
             .required('No password provided.')
             .min(8, 'Password is too short - should be 8 chars minimum.')
             .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-        phoneNumber: Yup.string()/*matches(phoneRegExp, "Phone number is not valid").*/,
-        restaurantName: Yup.string().required()
+        restaurantName: Yup.string()
     });
 
     const initialValues = {
@@ -50,14 +53,14 @@ const RegisterProfessional = () => {
     }
 
     const onSubmit = async values => {
+        console.log(values);
         setLoading(true);
         await baseApi.post('Restaurants/register', values).then(res => {
-            console.log(res)
             setLoading(false)
-             setOpenSnackbar([true, res.data.message, "success"]);
+            setOpenSnackbar([true, res.data, "success"]);
         }).catch((err) => {
             setLoading(false);
-             setOpenSnackbar([true, err.response.data.error, "error"]);
+            setOpenSnackbar([true, err.response.data.error, "error"]);
         })
     }
 
@@ -102,7 +105,7 @@ const RegisterProfessional = () => {
                                     </FormGroup>
                                     <FormGroup>
                                         <Label>{t('Numéro de téléphone')}</Label>
-                                        <Field className="field" name="phone" type="string"/>
+                                        <Field className="field" name="phoneNumber" type="string"/>
                                         {errors.phoneNumber && touched.phoneNumber ?
                                             <div className="errs">{t(`${errors.phoneNumber}`)}</div> : null}
                                     </FormGroup>
@@ -136,12 +139,12 @@ const RegisterProfessional = () => {
                                             {!loading && t('Créer un compte')}
                                             {loading && t('Création')}
                                         </Button>
-                                        {
+                                        {/*
                                             isInPage ? <a href="/login">{t('J\'ai déja un compte')}</a>
                                                 :
                                                 <a onClick={() => setSelected(LoginModalTemplate.name)}
                                                    href="#login">{t('J\'ai déja un compte')}</a>
-                                        }
+                                        */}
 
                                         <Snack handleClose={handleClose}
                                                vertical="bottom"

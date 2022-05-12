@@ -84,5 +84,10 @@
   "Numéro de téléphone": "Numéro de téléphone",
   "Nom du restaurant": "Nom du restaurant",
   "restaurantName is a required field": "Nom du restaurant requis",
-  "Phone number is not valid": "Numéro de téléphone invalide"
+  "Phone number is not valid": "Numéro de téléphone invalide",
+  "phoneNumber is a required field": "Numéro de téléphone invalide",
+  "phoneNumber must be at least 8 characters": "8 chiffres minimum pour le numéro de téléphone",
+  "phoneNumber must be at most 13 characters": "13 chiffres maximum pour le numéro de téléphone",
+  "phoneNumber must match the following: \"/^\\d*$/\"": "Le numéro ne doit contenir que des chiffres",
+  "Réglez en espèces à la livraison. Bon appétit !": "Réglez en espèces à la livraison. Bon appétit !"
 }

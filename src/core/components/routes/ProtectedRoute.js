@@ -1,11 +1,10 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import PropTypes from "prop-types";
 import useAuth from "../../../api/auth";
-import LoginPage from "../../../views/Login/LoginPage";
 
 const ProtectedRoute = (props) => {
-    const { redirectPath, component, preventConnected, ...routeProps} = props;
+    const {redirectPath, component, preventConnected, ...routeProps} = props;
     const Component = component;
     const {user} = useAuth();
     const isAccessible = Boolean(user != null);
@@ -18,7 +17,7 @@ const ProtectedRoute = (props) => {
                         {...routeProps}
                         render={props => {
                             if (user)
-                                return <Redirect to="/" />
+                                return <Redirect to="/"/>
                             else
                                 return <Component {...props} />
                         }}
@@ -27,7 +26,7 @@ const ProtectedRoute = (props) => {
                         {...routeProps}
                         render={props => {
                             if (isAccessible) return <Component {...props} />;
-                            return <Redirect to={{ pathname: redirectPath || "/login" }} />;
+                            return <Redirect to={{pathname: redirectPath || "/login"}}/>;
                         }}
                     />
             }
@@ -40,7 +39,7 @@ ProtectedRoute.propTypes = {
     redirectPath: PropTypes.string,
     preventConnected: PropTypes.bool,
     component: PropTypes.oneOfType([
-        PropTypes.shape({ render: PropTypes.func.isRequired }),
+        PropTypes.shape({render: PropTypes.func.isRequired}),
         PropTypes.func
     ]),
 };

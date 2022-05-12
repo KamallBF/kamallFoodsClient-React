@@ -11,6 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         setIsInPage(false)
+        window.scrollTo(0, 0);
     })
 
     return (
