@@ -33,7 +33,7 @@ const Content1 = () => {
             <span className="step-icon-paiement" data-icon=""/>
             <span className="step-number">3.</span>
             <span className="step-headline">{t('Paiement et livraison')}</span>
-            <p className="step-p">{t('Réglez en espèces ou en ligne avec Orange Money, Mobicash. Bon appétit !')}</p>
+            <p className="step-p">{t('Réglez en espèces à la livraison. Bon appétit !')}</p>
         </div>
     )
 

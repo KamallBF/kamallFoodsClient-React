@@ -53,22 +53,34 @@ module.exports = function (_env, argv) {
                 {
                     test: /\.scss$/,
                     exclude: /\.global.scss$/,
-                    use : [
-                        { loader: "style-loader" },
+                    use: [
+                        {loader: "style-loader"},
                         //{ loader: "@teamsupercell/typings-for-css-modules-loader", options: { modules: true, namedExport: true, camelCase: true, localIdentName: "[name]_[local]_[hash:base64]" }},
-                        { loader: "postcss-loader", options: { plugins: function () { return [ require("autoprefixer") ]; }}},
-                        { loader: "sass-loader" }
+                        {
+                            loader: "postcss-loader", options: {
+                                plugins: function () {
+                                    return [require("autoprefixer")];
+                                }
+                            }
+                        },
+                        {loader: "sass-loader"}
                     ]
                 },
 
                 {
                     test: /\.scss$/,
                     include: /\.global.scss$/,
-                    use : [
-                        { loader: "style-loader" },
-                        { loader: "css-loader" },
-                        { loader: "postcss-loader", options: { plugins: function () { return [ require("autoprefixer") ]; }}},
-                        { loader: "sass-loader" }
+                    use: [
+                        {loader: "style-loader"},
+                        {loader: "css-loader"},
+                        {
+                            loader: "postcss-loader", options: {
+                                plugins: function () {
+                                    return [require("autoprefixer")];
+                                }
+                            }
+                        },
+                        {loader: "sass-loader"}
                     ]
                 },
                 {

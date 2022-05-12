@@ -55,7 +55,7 @@
   "Successfully authenticated": "Successfully authenticated",
   "Not found": "Incorrect email or password",
   "One or more errors occurred. (Invalid email or password)": "Invalid email or password",
-  "One or more errors occurred. (The password is not valid)" : "Invalid email or password",
+  "One or more errors occurred. (The password is not valid)": "Invalid email or password",
   "Adresse": "Adress",
   "Entrez le nom de votre rue ou laissez-nous déterminer votre position.": "Enter your street address or let us find your location.",
   "Sélection": "Choose your restaurant and food",
@@ -85,5 +85,8 @@
   "Numéro de téléphone": "Phone Number",
   "Nom du restaurant": "Restaurant Name",
   "restaurantName is a required field": "Restaurant Name is required",
-  "Phone number is not valid": "Phone number is not valid"
+  "Phone number is not valid": "Phone number is not valid",
+  "phoneNumber is a required field": "Phone Number is a required field",
+  "phoneNumber must match the following: \"/^\\d*$/\"": "Phone Number must be digits only",
+  "Réglez en espèces à la livraison. Bon appétit !": "Pay in cash during delivery. Good appetite."
 }

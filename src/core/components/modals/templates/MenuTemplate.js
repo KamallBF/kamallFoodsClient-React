@@ -5,6 +5,8 @@ import LoginModalTemplate from "./LoginModalTemplate";
 import SignUpModalTemplate from "./SignUpModalTemplate";
 import useAuth from "../../../../api/auth";
 import Snack from "../../Snack";
+import {Link} from "react-router-dom";
+import useModalContext from "../../../context/modalContext";
 
 const MenuTemplate = ({setModalState, setSelected, value}) => {
     const [t] = useTranslation();
@@ -23,9 +25,9 @@ const MenuTemplate = ({setModalState, setSelected, value}) => {
                 <div className="profile-data">
                     <span id="myaccount"
                           href="#/myaccount">{user ? user.firstname + " " + user.lastname : t('Mon Compte')}</span>
-                    <a href="/my-account">
-                        <span id="personnaldata">{t('Voir mes données personnelles')}</span>
-                    </a>
+                    <Link to="/my-account">
+                        <span onClick={() => setModalState(false)} id="personnaldata">{t('Voir mes données personnelles')}</span>
+                    </Link>
                 </div>
                 <span onClick={() => setModalState(false)} className="close-button">X</span>
             </section>

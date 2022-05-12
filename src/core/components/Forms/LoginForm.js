@@ -119,7 +119,7 @@ const LoginForm = ({setSelected}) => {
                                     ) : null}
                                 </FormGroup>
                                 <div className="bottom-login-signup">
-                                    <Button disabled={loading}  textSize="15px"
+                                    <Button disabled={loading} textSize="15px"
                                             textColor="white"
                                             type="submit">
                                         {loading && (

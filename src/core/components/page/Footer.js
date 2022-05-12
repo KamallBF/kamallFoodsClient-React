@@ -24,7 +24,7 @@ const Footer = () => {
                     <p>{t('Contactez - nous')}</p>
                 </div>
             </div>
-            <div id="copyright">Kamall Foods 2021 ©</div>
+            <div id="copyright">Kamall Foods 2022 ©</div>
         </footer>
     )
 }
